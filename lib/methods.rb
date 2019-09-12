@@ -107,6 +107,41 @@ def combat
     end
 end 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def inspect_the_house
+    prompt = TTY::Prompt.new
+    puts `clear`
+    puts "As you inspect the house, you notice that it is sealed shut. The windows are borded and the house is locked."
+    puts "You continue walking around the house, and notice a sack with something inside."
+    puts "Upon further inspection you find a mace!"
+     new_weapon("Mace", "Melee")
+    puts "You continue down the path into the confines of the thick spruce forest. As you stroll, you come to a fork in the road. "
+    puts "To your left the path continues to a grassy clearing, and to your right the path leads deeper into the pine-bound forests of olde."
+    path_house_choice = prompt.select("Where shall you go?", "Head left, to the clearing.", "Delve deeper into the sea of trees.", "Check inventory")
+    if path_house_choice == "Head left, to the clearing."
+            #clearing method
+    elsif path_house_choice == "Delve deeper into the sea of trees."
+        #Combat method
+    elsif path_house_choice == "Check inventory"
+       puts "You have #{inventory.join(", ")}"
+    end
+end
+
+
 def adventure_path1
     prompt = TTY::Prompt.new
     choice = prompt.select("What would you like to do first?","Explore the town!", "Start your adventure on the beaten path!", "Quit Game") 
@@ -119,22 +154,7 @@ def adventure_path1
         path_choice = prompt.select("Would you like to inspect the house or follow the path into the forest?", "Inspect the house", "Follow the path into the forest", "Check inventory")
         case path_choice 
         when "Inspect the house" 
-            puts `clear`
-            puts "As you inspect the house, you notice that it is sealed shut. The windows are borded and the house is locked."
-            puts "You continue walking around the house, and notice a sack with something inside."
-            puts "Upon further inspection you find a mace!"
-            new_weapon("Mace", "Melee")
-            puts "You continue down the path into the confines of the thick spruce forest. As you stroll, you come to a fork in the road. "
-            puts "To your left the path continues to a grassy clearing, and to your right the path leads deeper into the pine-bound forests of olde."
-            path_house_choice = prompt.select("Where shall you go?", "Head left, to the clearing.", "Delve deeper into the sea of trees.", "Check inventory")
-            if path_house_choice == "Head left, to the clearing."
-                    #clearing method
-            elsif path_house_choice == "Delve deeper into the sea of trees."
-                #Combat method
-
-            elsif path_house_choice == "Check inventory"
-               puts "You have #{inventory.join(", ")}"
-            end
+            inspect_the_house
 
         when "Follow the path into the forest"
             puts "You continue down the path into the confines of the thick spruce forest. As you stroll, you come to a fork in the road. "
