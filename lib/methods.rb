@@ -148,7 +148,6 @@ end
 
 
 
-# Adventure Methods 
 
 
 def inspect_the_house
@@ -204,6 +203,7 @@ def clearing_path
             exit
         end
 end
+
 
 
 def ford_river
@@ -277,5 +277,93 @@ def adventure_path1
 
 end 
 
+def cave
+    prompt = TTY::Prompt.new
+    puts "Before you enter the cave you stare into the dark abyss of the opening"
+    puts "As you begin to enter, you get a cold chill and hear faint whispers."
+    choice = prompt.select("What do you want to do?", "Continue exploring","Go back to town because I am too scared or tired")
+        case choice
+        when "Continue exploring"
+             cave_exploring
+        when "Go back to town because I am too scared or tired"
+            puts "You end your adventure today by following the path back to town"
+            exit
+        end
+
+end
+
+
+
+def run_sequence_specter
+    player_hp = 20
+    enemy_hp = 10
+    enemy_attack_num = rand(1..5)
+    player_attack_num = rand(3..9)
+    prompt = TTY::Prompt.new
+    num = rand(1..20)
+    case num 
+    when 10..20
+        puts "You rolled a #{num} and successfully ran from the specter".green
+        puts "You ran back to town, telling the militia of the spectre threat in the cave across the river."
+    when 1..9
+        puts "You rolled a #{num} and the spectre gets a free hit!".red
+        new_hp = player_hp - enemy_attack_num
+        puts "You now have #{new_hp}"
+        enemy_fight_choice = prompt.select("You have been hit by the spectre.".red, "Fight", "Run")
+        case enemy_fight_choice
+        when "Fight"
+            fight_sequence_spectre
+        else
+            puts "You ran back to town, telling the militia of the spectre threat in the cave across the river."
+        end
+    end
+end 
+
+def fight_sequence_spectre
+    player_hp = 20
+    enemy_hp = 10
+    enemy_attack_num = rand(1..5)
+    player_attack_num = rand(3..9)
+    prompt = TTY::Prompt.new
+    fight_choice = prompt.select("You ready yourself for an attack.", "Attack with #{inventory[0]}", "Attack with #{inventory[1]}")
+    if fight_choice == fight_choice
+       diff_hp = enemy_hp - player_attack_num
+       puts "You attacked the spectre and it has #{diff_hp} hp left".red
+       fight_choice2 = prompt.select("The spectre is badly hurt, howling a long, loud, piercing cry.", "Attack with #{inventory[0]}", "Attack with #{inventory[1]}")
+       if fight_choice2 == fight_choice2
+            diff_hp2 = diff_hp - player_attack_num
+            if diff_hp2 > 0 
+                puts "You attacked the spectre and it has #{diff_hp2} hp left".red
+                death = prompt.select("You can tell the spectre is alive but the cold begins to wane as its aspirations diminish ", "Finish it off with your #{inventory[0]}", "Finish it off with your #{inventory[1]}")
+                if death == death
+                    puts "You beat the spectre. You return to town to warn the villagers of the looming spectre threat"
+                end
+            elsif diff_hp2 <= 0
+            puts "You beat the spectre. You return to town to warn the villagers of the looming spectre threat"
+            end
+        end
+    end
+end
+
+def cave_exploring
+    player_hp = 20
+    enemy_hp = 10
+    enemy_attack_num = rand(1..5)
+    player_attack_num = rand(3..9)
+    prompt = TTY::Prompt.new
+    puts "The further you enter, the colder you get. The air is damp and ominious."
+    puts "You start to hear a high pitch whisper."
+    choice = prompt.select("Before you have the chance to retreat, a specter appears out of the nerve-racking shadows", "Fight","Run")
+    case choice
+    when "Fight"
+        fight_sequence_spectre
+    when "Run"
+        run_sequence_specter
+    end
+    case player_hp
+    when -4..0
+        puts "Tragically, the spectre strikes you down and delivers a savage finishing blow. Your adventure has ended"
+    end
+end
 
 
