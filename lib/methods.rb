@@ -75,8 +75,6 @@ def inventory
     end
 end
 
-# Adventure Methods 
-
 #Combat methods
 def fight_sequence
     player_hp = 20
@@ -150,29 +148,7 @@ end
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# Adventure Methods 
 
 
 def inspect_the_house
@@ -218,8 +194,8 @@ def clearing_path
     puts "Across the river you notice a cave. The opening as large and dark as a megaladon's gullet"
     clearing_choice = prompt.select("What would you like to do?","Roll and see if you can ford the river","Take the path back to town","Check inventory","Quit game")
         case clearing_choice
-        when "Roll and see if I can ford the river"
-            #ford_river_method
+        when "Roll and see if you can ford the river"
+            ford_river
         when "Take path back to town"
             puts "You take the path back to town to get some rest"
         when "Check inventory"
@@ -228,6 +204,26 @@ def clearing_path
             exit
         end
 end
+
+
+def ford_river
+    roll = rand(1..20)
+    case roll
+    when 1..9
+        puts "You roll a #{roll}. The river roars with intensity as a new wave of water teems toward you."
+        puts "You leap back towards the confines of the thick forest. The wall of trees protects against"
+        puts "the raging current. As you follow the path back to town you hear snickering above your head."
+        puts "You roll your neck upwards and discover a creature amongst the web of branches!".red
+        combat
+    when 10..20
+        puts "You roll a #{roll}. You successfully ford the river's frigid current, you feel your legs being"
+        puts "licked by the subterran flora. As you reach the opposing shore you come upon the gaping mouth"
+        puts "of the cave. A cool wind carries the underground air, carressing your skin, still dripping from"
+        puts "braving the river's waters."
+        #Cave method here
+    end
+end
+
 
 # Check Inventory
 
