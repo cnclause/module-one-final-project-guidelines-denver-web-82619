@@ -186,7 +186,7 @@ def inspect_the_house
     puts "To your left the path continues to a grassy clearing, and to your right the path leads deeper into the pine-bound forests of olde."
     path_house_choice = prompt.select("Where shall you go?", "Head left, to the clearing.", "Delve deeper into the sea of trees.", "Check inventory")
     if path_house_choice == "Head left, to the clearing."
-        clearing
+        clearing_path
     elsif path_house_choice == "Delve deeper into the sea of trees."
         combat
     elsif path_house_choice == "Check inventory"
@@ -199,14 +199,33 @@ def follow_path_into_forest
     prompt = TTY::Prompt.new
     puts "You continue down the path into the confines of the thick spruce forest. As you stroll, you come to a fork in the road. "
     puts "To your left the path continues to a grassy clearing, and to your right the path leads deeper into the pine-bound forests of olde."
-    path_forest_choice = prompt.select("Where shall you go?", "Head left, to the clearing.", "Delve deeper into the sea of trees.", "Check inventory")
+    path_forest_choice = prompt.select("Where shall you go?", "Head left, into the clearing.", "Delve deeper into the sea of trees.", "Check inventory")
         case path_forest_choice
         when "Head left, into the clearing."
-             clearing
+            clearing_path
         when "Delve deeper into the sea of trees."
              combat
         when "Check inventory"
             check_inventory_on_path
+        end
+end
+
+def clearing_path
+    prompt = TTY::Prompt.new
+    #puts `clear`
+    puts "When you enter the clearing you notice that the path has ended.\n"
+    puts "You see a river ahead. It spans about 20 feet across, with rushing, ice, cold water that is about knee deep."
+    puts "Across the river you notice a cave. The opening as large and dark as a megaladon's gullet"
+    clearing_choice = prompt.select("What would you like to do?","Roll and see if you can ford the river","Take the path back to town","Check inventory","Quit game")
+        case clearing_choice
+        when "Roll and see if I can ford the river"
+            #ford_river_method
+        when "Take path back to town"
+            puts "You take the path back to town to get some rest"
+        when "Check inventory"
+            check_inventory_clearing
+        when "Quit game"
+            exit
         end
 end
 
@@ -225,8 +244,8 @@ def check_inventory_start_of_adv
 end 
 
 def check_inventory_clearing
-    puts "You have a #{inventory.join()}".yellow
-    clearing
+    puts "You have #{inventory.join(", ")}".yellow
+    clearing_path
 end
 
 
@@ -245,24 +264,7 @@ def start_adv_on_beaten_path
         end
 end 
 
-def clearing
-    prompt = TTY::Prompt.new
-    puts `clear`
-    puts "When you enter the clearing you notice that the path has ended.\n"
-    puts "You see a river ahead. It spans about 20 feet across, with rushing, ice, cold water that is about knee deep."
-    puts "Across the river you notice a cave. The opening as large and dark as a megaladon's gullet"
-    clearing_choice = prompt.select("What would you like to do?","Roll and see if you can ford the river","Take the path back to town","Check inventory","Quit game")
-        case clearing_choice
-        when "Roll and see if I can ford the river"
-            #ford_river_method
-        when "Take path back to town"
-            puts "You take the path back to town to get some rest"
-        when "Check inventory"
-            check_inventory_clearing
-        when "Quit game"
-            exit
-        end
-end
+
 
 
 def adventure_path1
