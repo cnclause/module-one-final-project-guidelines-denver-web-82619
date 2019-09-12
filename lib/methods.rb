@@ -75,8 +75,6 @@ def inventory
     end
 end
 
-# Adventure Methods 
-
 #Combat methods
 def fight_sequence
     player_hp = 20
@@ -149,6 +147,8 @@ def combat
 end 
 
 
+
+# Adventure Methods
 
 
 def inspect_the_house
