@@ -151,8 +151,8 @@ def combat
     end
 end 
 
-# combat
-# binding.pry
+
+
 
 
 
