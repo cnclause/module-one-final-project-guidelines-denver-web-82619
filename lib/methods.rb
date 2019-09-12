@@ -77,68 +77,76 @@ end
 
 # Adventure Methods 
 
-#Combat method
+#Combat methods
+def fight_sequence
+    player_hp = 20
+    enemy_hp = 10
+    enemy_attack_num = rand(1..5)
+    player_attack_num = rand(3..9)
+    prompt = TTY::Prompt.new
+    fight_choice = prompt.select("You ready yourself for an attack.", "Attack with #{inventory[0]}", "Attack with #{inventory[1]}")
+    if fight_choice == fight_choice
+       diff_hp = enemy_hp - player_attack_num
+       puts "You attacked the goblin and it has #{diff_hp} hp left".red
+       fight_choice2 = prompt.select("The goblin is badly hurt and drops his branch writhing in pain.", "Attack with #{inventory[0]}", "Attack with #{inventory[1]}")
+       if fight_choice2 == fight_choice2
+            diff_hp2 = diff_hp - player_attack_num
+            if diff_hp2 > 0 
+                puts "You attacked the goblin and it has #{diff_hp2} hp left".red
+                death = prompt.select("You can tell the goblin is breathing but it lies motionless on the forest floor", "Finish it off with your #{inventory[0]}", "Finish it off with your #{inventory[1]}")
+                if death == death
+                    puts "You beat the goblin to its last breath. As you finish it off, you return to town to warn the villagers of the looming goblin threat"
+                end
+            elsif diff_hp2 <= 0
+            puts "You beat the goblin to its last breath. As you finish it off, you return to town to warn the villagers of the looming goblin threat"
+            end
+        end
+    end
+end
+
+def run_sequence
+    player_hp = 20
+    enemy_hp = 10
+    enemy_attack_num = rand(1..5)
+    player_attack_num = rand(3..9)
+    prompt = TTY::Prompt.new
+    num = rand(1..20)
+    case num 
+    when 10..20
+        puts "You rolled a #{num} and successfully ran from the Goblin".green
+        puts "You ran back to town, telling the militia of the lingering goblin threat in the woods nearby."
+    when 1..9
+        puts "You rolled a #{num} and the goblin gets a free hit!".red
+        new_hp = player_hp - enemy_attack_num
+        puts "You now have #{new_hp}"
+        enemy_fight_choice = prompt.select("You have been hit by the goblin.".red, "Fight", "Run")
+        case enemy_fight_choice
+        when "Fight"
+            fight_sequence
+        else
+            puts "You ran back to town, telling the militia of the lingering goblin threat in the woods nearby."
+        end
+    end
+end
+
 def combat
     player_hp = 20
     enemy_hp = 10
     enemy_attack_num = rand(1..5)
-    player_attack_num = rand(3..10)
+    player_attack_num = rand(3..9)
     prompt = TTY::Prompt.new
-    combat_choice = prompt.select("A goblin springs upon you as you follow the path! It's holding a thick branch made to look like a club." "Fight", "Run")
-    if combat_choice == "Fight"
-        fight_choice = prompt.select("You ready yourself for an attack.", "Attack with #{inventory[0]}", "Attack with #{inventory[1]}")
-        if fight_choice == fight_choice
-        end  
-    elsif combat_choice == "Run"
-        num = rand(1..20)
-        if num > 9
-            puts "You rolled a #{num} and successfully ran from the Goblin"
-        elsif num < 10
-            puts "You rolled a #{num} and the goblin gets a free hit!"
-            new_hp = player_hp - enemy_attack_num
-            puts "You now have #{new_hp}"
-            enemy_fight_choice = prompt.select("You have been hit by the goblin." "Fight", "Run")
-            if enemy_fight_choice == "Fight"
-                fight_choice
-            else
-
-            end
-        end
+    combat_choice = prompt.select("A goblin springs upon you as you follow the path! It's holding a thick branch made to look like a club.", "Fight", "Run")
+    case combat_choice
+    when "Fight"
+        fight_sequence
+    when "Run"
+        run_sequence
+    end
+    case player_hp
+    when -4..0
+        puts "Tragically, the goblin strikes you down and delivers a savage finishing blow. Your adventure has ended"
     end
 end 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
