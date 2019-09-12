@@ -33,7 +33,7 @@ class Cli
         def new_weapon(name, category)
             Weapon.create(name: name, category: "#{category} Weapon")
             Userweapon.create(user: User.all.last, weapon: Weapon.all.last)
-            puts `clear`
+            # puts `clear`
             puts "#{name} was added to your inventory.".yellow.blink
         end
         def item (choice)
