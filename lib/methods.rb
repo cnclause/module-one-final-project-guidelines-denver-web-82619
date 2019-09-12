@@ -88,7 +88,7 @@ def combat
     if combat_choice == "Fight"
         fight_choice = prompt.select("You ready yourself for an attack.", "Attack with #{inventory[0]}", "Attack with #{inventory[1]}")
         if fight_choice == fight_choice
-            
+        end  
     elsif combat_choice == "Run"
         num = rand(1..20)
         if num > 9
@@ -158,5 +158,6 @@ def adventure_path1
     end
 
 end 
+
 
 

@@ -61,7 +61,7 @@ class Cli
         Userweapon.create(user: created_user, weapon: Weapon.all.last)
         puts "Welcome to town, #{choice.downcase}!"
 
-        adventure_path1 
+        adventure_path1
         #binding.pry
 
       
