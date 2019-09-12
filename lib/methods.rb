@@ -122,6 +122,28 @@ end
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def inspect_the_house
     prompt = TTY::Prompt.new
     puts `clear`
@@ -137,10 +159,55 @@ def inspect_the_house
     elsif path_house_choice == "Delve deeper into the sea of trees."
         #Combat method
     elsif path_house_choice == "Check inventory"
-       puts "You have #{inventory.join(", ")}"
+       puts "You have #{inventory.join(", ")}.yellow.blink"
     end
+end 
+
+
+def follow_path_into_forest
+    prompt = TTY::Prompt.new
+    puts "You continue down the path into the confines of the thick spruce forest. As you stroll, you come to a fork in the road. "
+    puts "To your left the path continues to a grassy clearing, and to your right the path leads deeper into the pine-bound forests of olde."
+    path_forest_choice = prompt.select("Where shall you go?", "Head left, to the clearing.", "Delve deeper into the sea of trees.", "Check inventory")
+        case path_forest_choice
+        when "Head left, into the clearing."
+
+        when "Delve deeper into the sea of trees."
+             #Combat method
+        when "Check inventory"
+            check_inventory_on_path
+            #puts "You have a #{inventory.join(", ")}"
+        end
 end
 
+# Check Inventory
+
+def check_inventory_on_path
+     puts "You have a #{inventory.join()}".yellow.blink
+     #Impliment/search for way to loop back to the original prompt
+     follow_path_into_forest
+end
+
+def check_inventory_start_of_adv
+    puts "You have a #{inventory.join()}".yellow.blink
+    #start_adv_on_beaten_path
+end
+
+
+def start_adv_on_beaten_path
+    prompt = TTY::Prompt.new
+    puts `clear`
+        puts "As you walk the path, you notice a lush forest and an old, abandoned house."
+        path_choice = prompt.select("Would you like to inspect the house or follow the path into the forest?", "Inspect the house", "Follow the path into the forest", "Check inventory")
+        case path_choice 
+        when "Inspect the house" 
+            inspect_the_house
+        when "Follow the path into the forest"
+            follow_path_into_forest 
+        when "Check inventory"
+            check_inventory_start_of_adv
+        end
+end
 
 def adventure_path1
     prompt = TTY::Prompt.new
@@ -149,30 +216,7 @@ def adventure_path1
     when "Explore the town!"
         #add choice 
     when "Start your adventure on the beaten path!" 
-        puts `clear`
-        puts "As you walk the path, you notice a lush forest and an old, abandoned house."
-        path_choice = prompt.select("Would you like to inspect the house or follow the path into the forest?", "Inspect the house", "Follow the path into the forest", "Check inventory")
-        case path_choice 
-        when "Inspect the house" 
-            inspect_the_house
-
-        when "Follow the path into the forest"
-            puts "You continue down the path into the confines of the thick spruce forest. As you stroll, you come to a fork in the road. "
-            puts "To your left the path continues to a grassy clearing, and to your right the path leads deeper into the pine-bound forests of olde."
-            path_forest_choice = prompt.select("Where shall you go?", "Head left, to the clearing.", "Delve deeper into the sea of trees.", "Check inventory")
-                if path_forest_choice == "Head left, into the clearing."
-
-                elsif path_forest_choice == "Delve deeper into the sea of trees."
-                    #Combat method
-                elsif path_forest_choice == "Check inventory"
-                    puts "You have a #{inventory.join(", ")}"
-                end
-        when "Check inventory"
-            #Impliment/search for way to loop back to the original prompt
-           puts "You have a #{inventory.join()}"
-           path_forest_choice
-        end
-
+        start_adv_on_beaten_path
     when "Quit Game"
         exit
     end
