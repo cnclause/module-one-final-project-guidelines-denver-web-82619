@@ -144,6 +144,29 @@ end
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def inspect_the_house
     prompt = TTY::Prompt.new
     puts `clear`
