@@ -1,23 +1,30 @@
 <!-- Make sure to create a good README.md with a short description, install instructions, a contributors guide and a link to the license for your code. --> 
+# **DnD Adventure** 
 
-gems to install:
-gem "tty-prompt", "~> 0.19.0"
-gem "activerecord", "~> 5.2"
-gem "sqlite3", "~> 1.4"
-gem "sinatra", "~> 2.0"
-gem "sinatra-activerecord", "~> 2.0"
-gem "require_all", "~> 2.0"
-gem "rest-client"
+Describe project 
 
-gem "pry", "~> 0.12.2"
+## Gems Needed: 
+- activerecord
+- sqlite3
+- sinatra
+- sinatra-activerecord
+- require_all
+- rest-client
+- TTY-Prompt
+- TTY -Color
+- colorize
 
-gem "tty-color", "~> 0.5.0"
+## How to Install Gems: 
+1. 
+`git bundle install` 
+2. 
+3.
+And repeat until finished. 
 
-gem "colorize", "~> 0.8.1" 
+## Running the Program
+1. In your terminal run the command "ruby runner.rb"
+2. Use your keyboard to navigate through the adventure 
+3. Have fun! 
 
-To run: 
-run ruby runner.rb 
 
-Use keyboard 
-
-license code: 
+link to license for code: http://www.dnd5eapi.co/
