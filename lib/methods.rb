@@ -73,11 +73,24 @@ def inventory
     end.map do |item|
         item.name
     end
+end 
+
+#Finding User Items 
+def add_inventory
+    last_user_id = User.last.id
+    user_weapons_id = Userweapon.where(user_id: last_user_id)
+    weapon_id_array = user_weapons_id.map do |user_weapon| 
+        user_weapon.weapon_id 
+    end
+    if user_weapons_id.count < 2 
+        Weapon.create(name: "Short Sword", category: "Melee Weapon")
+        Userweapon.create(user: User.all.last, weapon: Weapon.all.last)
+    end
 end
 
 #Combat methods
-def fight_sequence
-    inventory.push("Short Sword")
+def fight_sequence 
+    add_inventory
     player_hp = 20
     enemy_hp = 10
     enemy_attack_num = rand(1..5)
@@ -322,6 +335,7 @@ def run_sequence_specter
 end 
 
 def fight_sequence_spectre
+    add_inventory
     player_hp = 20
     enemy_hp = 10
     enemy_attack_num = rand(1..5)
@@ -346,6 +360,8 @@ def fight_sequence_spectre
         end
     end
 end
+
+
 
 def cave_exploring
     player_hp = 20
