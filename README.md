@@ -25,10 +25,10 @@ Welcome to the DnD Adventure! This program will take you through a short, but fu
 3. Have fun!  
 4. See a video of running through the program here: (https://youtu.be/PJTWHOh5P9U)
 
-![Start a new game](https://imgur.com/ZvKcthG)
-![Create a character: choose your race](https://imgur.com/8ZI0xnJ)
-![Choose different explore options](https://imgur.com/yBYSpmR)
-![Battle monsters](https://imgur.com/Opdh6IW)
+![alternativetext](readme/start.png)
+![alternativetext](readme/choosecharact.png)
+![alternativetext](readme/exploreoption.png)
+![alternativetext](readme/fight.png)
 
 
 
