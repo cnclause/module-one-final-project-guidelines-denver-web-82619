@@ -77,6 +77,7 @@ end
 
 #Combat methods
 def fight_sequence
+    inventory.push("Short Sword")
     player_hp = 20
     enemy_hp = 10
     enemy_attack_num = rand(1..5)
@@ -103,6 +104,7 @@ def fight_sequence
 end
 
 def run_sequence
+    inventory.push("Short Sword")
     player_hp = 20
     enemy_hp = 10
     enemy_attack_num = rand(1..5)
@@ -220,7 +222,7 @@ def ford_river
         puts "licked by the subterran flora. As you reach the opposing shore you come upon the gaping mouth"
         puts "of the cave. A cool wind carries the underground air, carressing your skin, still dripping from"
         puts "braving the river's waters."
-        #Cave method here
+        cave
     end
 end
 
