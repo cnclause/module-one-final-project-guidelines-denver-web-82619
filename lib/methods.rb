@@ -85,6 +85,7 @@ def add_inventory
     if user_weapons_id.count < 2 
         Weapon.create(name: "Short Sword", category: "Melee Weapon")
         Userweapon.create(user: User.all.last, weapon: Weapon.all.last)
+        puts "You find an old Short Sword on the ground. You think it will come in handy so you add it to your inventory.".yellow
     end
 end
 
