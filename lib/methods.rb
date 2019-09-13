@@ -168,8 +168,10 @@ end
 def inspect_the_house
     prompt = TTY::Prompt.new
     puts `clear`
-    puts "As you inspect the house, you notice that it is sealed shut. The windows are borded and the house is locked."
-    puts "You continue walking around the house, and notice a sack with something inside."
+    puts "You circle the perimeter, eyeing the exterior you notice the windows are forced closed with wooden boards and rusted nails."
+    puts "The door seems to be propped closed from the inside and the doorknob barely turns anymore. The door frame has a green sheen"
+    puts "from the overgrown moss sprouting from the lush forest floor. As you come around the other side of the abandoned abode, you"
+    puts "notice a potato sack that has something heavy inside."
     puts "Upon further inspection you find a mace!"
      new_weapon("Mace", "Melee")
     puts "You continue down the path into the confines of the thick spruce forest. As you stroll, you come to a fork in the road. "
@@ -208,9 +210,9 @@ end
 def clearing_path
     prompt = TTY::Prompt.new
     #puts `clear`
-    puts "When you enter the clearing you notice that the path has ended.\n"
-    puts "You see a river ahead. It spans about 20 feet across, with rushing, ice, cold water that is about knee deep."
-    puts "Across the river you notice a cave. The opening as large and dark as a megaladon's gullet"
+    puts "You finally find the break in the woods as you come upon the clearing. You approach a river that looks to be about 20 feet across"
+    puts "you check the water's temperature with your hand and find that it is ice cold. This river is likely flowing from the mountains of"
+    puts "Galmoria. It is mid-summer and the river is not deep yet not shallow either, the water's flow is strong."
     clearing_choice = prompt.select("What would you like to do?","Roll and see if you can ford the river","Take the path back to town","Check inventory","Quit game")
         case clearing_choice
         when "Roll and see if you can ford the river"
@@ -231,16 +233,16 @@ def ford_river
     roll = rand(1..20)
     case roll
     when 1..9
-        puts "You roll a #{roll}. The river roars with intensity as a new wave of water teems toward you."
+        puts "You roll a #{roll}. The river roars with intensity as a new wave of water teems toward you.".red
         puts "You leap back towards the confines of the thick forest. The wall of trees protects against"
         puts "the raging current. As you follow the path back to town you hear snickering above your head."
         puts "You roll your neck upwards and discover a creature amongst the web of branches!".red
         combat
     when 10..20
-        puts "You roll a #{roll}. You successfully ford the river's frigid current, you feel your legs being"
-        puts "licked by the subterran flora. As you reach the opposing shore you come upon the gaping mouth"
-        puts "of the cave. A cool wind carries the underground air, carressing your skin, still dripping from"
-        puts "braving the river's waters."
+        puts "You roll a #{roll}. You successfully ford the river's frigid current.".green
+        puts "You feel your legs being licked by the subterran flora. As you reach the opposing shore you come"
+        puts "upon the gaping mouth of the cave. A cool wind carries the underground air, carressing your skin,"
+        puts "still dripping from braving the river's waters."
         cave
     end
 end
@@ -268,8 +270,11 @@ end
 def start_adv_on_beaten_path
     prompt = TTY::Prompt.new
     # puts `clear`
-        puts "As you walk the path, you notice a lush forest and an old, abandoned house."
-        path_choice = prompt.select("Would you like to inspect the house or follow the path into the forest?", "Inspect the house", "Follow the path into the forest", "Check inventory")
+        puts "You embark on the path leading out of town, few blades of grass litter the path that has been frequently travelled by various"
+        puts "adventurers over the years. The air is warm and the area is humid as you are in the midst of mid-summer's heat. You observe an old,"
+        puts "dilapidated house, the roof is partially caved in and the windows are boarded shut. To your left, you see a pervasive forest."
+        puts "You can tell the woods are old as it has begun to encroach upon the town's surrounding lands and walls."
+        path_choice = prompt.select("What would you like to do?", "Inspect the house", "Follow the path into the forest", "Check inventory")
         case path_choice 
         when "Inspect the house"
             puts `clear`
@@ -301,11 +306,13 @@ end
 
 def cave
     prompt = TTY::Prompt.new
-    puts "Before you enter the cave you stare into the dark abyss of the opening"
-    puts "As you begin to enter, you get a cold chill and hear faint whispers."
+    puts "Before you enter the cave you gaze into the gaping maw of the entrance of the undergound passage."
+    puts "A strange air surrounds you as air blows from within the cave. Theres a distinct cold that gives you"
+    puts "a slight feeling of dread. You shake it off as you peer into the cave."
     choice = prompt.select("What do you want to do?", "Continue exploring","Go back to town because I am too scared or tired")
         case choice
         when "Continue exploring"
+            puts `clear`
              cave_exploring
         when "Go back to town because I am too scared or tired"
             puts "You end your adventure today by following the path back to town"
@@ -325,7 +332,7 @@ def run_sequence_specter
     num = rand(1..20)
     case num 
     when 10..20
-        puts "You rolled a #{num} and successfully ran from the specter".green
+        puts "You rolled a #{num} and successfully ran from the spectre".green
         puts "You ran back to town, telling the militia of the spectre threat in the cave across the river."
     when 1..9
         puts "You rolled a #{num} and the spectre gets a free hit!".red
@@ -336,7 +343,7 @@ def run_sequence_specter
         when "Fight"
             fight_sequence_spectre
         else
-            puts "You ran back to town, telling the militia of the spectre threat in the cave across the river."
+            puts "You ran back to town, telling the militia of the curse of the spectre dwelling within the cave."
         end
     end
 end 
@@ -357,12 +364,12 @@ def fight_sequence_spectre
             diff_hp2 = diff_hp - player_attack_num
             if diff_hp2 > 0 
                 puts "You attacked the spectre and it has #{diff_hp2} hp left".red
-                death = prompt.select("You can tell the spectre is alive but the cold begins to wane as its aspirations diminish ", "Finish it off with your #{inventory[0]}", "Finish it off with your #{inventory[1]}")
+                death = prompt.select("You can tell the spectre is alive but the cold begins to wane as its visage diminishes", "Finish it off with your #{inventory[0]}", "Finish it off with your #{inventory[1]}")
                 if death == death
-                    puts "You beat the spectre. You return to town to warn the villagers of the looming spectre threat"
+                    puts "You defeat the spectre. You return to the village to tell the townsmen of the cave-bound curse."
                 end
             elsif diff_hp2 <= 0
-            puts "You beat the spectre. You return to town to warn the villagers of the looming spectre threat"
+            puts "You defeat the spectre. You return to the village to tell the townsmen of the cave-bound curse."
             end
         end
     end
@@ -376,9 +383,10 @@ def cave_exploring
     enemy_attack_num = rand(1..5)
     player_attack_num = rand(3..9)
     prompt = TTY::Prompt.new
-    puts "The further you enter, the colder you get. The air is damp and ominious."
-    puts "You start to hear a high pitch whisper."
-    choice = prompt.select("Before you have the chance to retreat, a specter appears out of the nerve-racking shadows", "Fight","Run")
+    puts "As you push on into the depths of the cave, the air becomes increasingly colder and you notice you feel a threatening"
+    puts "presence permeating from deeper within the cave. You persevere and shrug the inherent sensation of doubt that"
+    puts "accompanies the deepening feeling of dread. You begin to have second thoughts of exploring the cave."
+    choice = prompt.select("Before you have the chance to retreat, a spectre materializes out of the unsuspecting shadows", "Fight","Run")
     case choice
     when "Fight"
         fight_sequence_spectre
