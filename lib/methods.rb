@@ -176,10 +176,13 @@ def inspect_the_house
     puts "To your left the path continues to a grassy clearing, and to your right the path leads deeper into the pine-bound forests of olde."
     path_house_choice = prompt.select("Where shall you go?", "Head left, to the clearing.", "Delve deeper into the sea of trees.", "Check inventory")
     if path_house_choice == "Head left, to the clearing."
+        puts `clear`
         clearing_path
     elsif path_house_choice == "Delve deeper into the sea of trees."
+        puts `clear`
         combat
     elsif path_house_choice == "Check inventory"
+        puts `clear`
         check_inventory_on_path
     end
 end 
@@ -192,8 +195,10 @@ def follow_path_into_forest
     path_forest_choice = prompt.select("Where shall you go?", "Head left, into the clearing.", "Delve deeper into the sea of trees.", "Check inventory")
         case path_forest_choice
         when "Head left, into the clearing."
+            puts `clear`
             clearing_path
         when "Delve deeper into the sea of trees."
+            puts `clear`
              combat
         when "Check inventory"
             check_inventory_on_path
@@ -209,8 +214,9 @@ def clearing_path
     clearing_choice = prompt.select("What would you like to do?","Roll and see if you can ford the river","Take the path back to town","Check inventory","Quit game")
         case clearing_choice
         when "Roll and see if you can ford the river"
+            puts `clear`
             ford_river
-        when "Take path back to town"
+        when "Take the path back to town"
             puts "You take the path back to town to get some rest"
         when "Check inventory"
             check_inventory_clearing
@@ -244,9 +250,8 @@ end
 
 
 def check_inventory_on_path
-     puts "You have #{inventory.join(", ")}".yellow
-     #Impliment/search for way to loop back to the original prompt
-     follow_path_into_forest
+    puts "You have #{inventory.join(", ")}".yellow
+    follow_path_into_forest
 end
 
 def check_inventory_start_of_adv
@@ -266,9 +271,11 @@ def start_adv_on_beaten_path
         puts "As you walk the path, you notice a lush forest and an old, abandoned house."
         path_choice = prompt.select("Would you like to inspect the house or follow the path into the forest?", "Inspect the house", "Follow the path into the forest", "Check inventory")
         case path_choice 
-        when "Inspect the house" 
+        when "Inspect the house"
+            puts `clear`
             inspect_the_house
         when "Follow the path into the forest"
+            puts `clear`
             follow_path_into_forest 
         when "Check inventory"
             check_inventory_start_of_adv
