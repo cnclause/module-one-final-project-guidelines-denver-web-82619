@@ -13,7 +13,8 @@ class Cli
     #     choice = prompt.select("Welcome to the DnD main menu!",("Start a game"), ("Manage users"), "Exit")
     # end
 
-    def start
+    def start 
+        puts `clear`
         puts "Hello, #{@user}. Lets choose a character!"
         choice = race_choice 
         if choice == "Exit"
