@@ -20,12 +20,20 @@ Welcome to the DnD Adventure! This program will take you through a short, but fu
  `bundle install` 
 
 ## Running the Program
-1. In your terminal run the command "ruby runner.rb"
+1. In your terminal run the command `ruby runner.rb`
 2. Use your arrow keys to navigate through the adventure 
 3. Have fun!  
 4. See a video of running through the program here: (https://youtu.be/PJTWHOh5P9U)
 
+![Start a new game](https://imgur.com/ZvKcthG)
+![Create a character: choose your race](https://imgur.com/8ZI0xnJ)
+![Choose different explore options](https://imgur.com/yBYSpmR)
+![Battle monsters](https://imgur.com/Opdh6IW)
+
+
+
+
 ## Contributors 
 This program was built by Andrew Thiessen and Catherine Clause. 
-If you want to access this program feel free to clone from: (cnclause/module-one-final-project-guidelines-denver-web-82619)
-The api used in this program can be found at:(http://www.dnd5eapi.co/)
+If you want to access this program feel free to clone from: (cnclause/module-one-final-project-guidelines-denver-web-82619).
+The api used in this program can be found at:(http://www.dnd5eapi.co/).
